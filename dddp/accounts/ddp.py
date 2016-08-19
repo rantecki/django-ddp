@@ -382,6 +382,8 @@ class Auth(APIMixin):
             # regular Django authentication - plaintext password... but you're
             # using HTTPS (SSL) anyway so it's protected anyway, right?
             return password
+        elif isinstance(password, dict):
+            return password['password']
         else:
             # Meteor is trying to be smart by doing client side hashing of the
             # password so that passwords are "...not sent in plain text over

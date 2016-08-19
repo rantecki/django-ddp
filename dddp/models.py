@@ -331,7 +331,7 @@ class Subscription(models.Model, object):
 
     _publication_cache = {}
     connection = models.ForeignKey(Connection)
-    sub_id = models.CharField(max_length=17)
+    sub_id = models.CharField(max_length=64)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, blank=True, null=True)
     publication = models.CharField(max_length=255)
     params_ejson = JSONField(default={},encode_kwargs={"cls":ejson.EJSONEncoder},decode_kwargs={"cls":ejson.EJSONDecoder})

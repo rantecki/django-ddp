@@ -222,6 +222,9 @@ class DDPWebSocketApplication(geventwebsocket.WebSocketApplication):
         # parse message set
         print("receive %s-%s: %s" % (this.request.META["REMOTE_ADDR"],this.user,message))
 
+        if isinstance(message, bytearray):
+            message = message.decode('utf-8')
+
         try:
             msgs = ejson.loads(message)
         except ValueError:
